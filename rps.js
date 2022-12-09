@@ -94,13 +94,13 @@ buttons.forEach((button) => {
     button.addEventListener('click', () => {
         round_win = playRound(button.className, getComputerChoice());
 
-        if ( start === true )
+        if ( start )
         {
             starting_message.removeChild(message);
             start = false;
         }
 
-        if ( repeat === false )
+        if ( !repeat )
         {
             round.removeChild(game_result);
             repeat = true;
