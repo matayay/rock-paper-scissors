@@ -1,0 +1,46 @@
+body {
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgb(129, 129, 134);
+}
+
+.title {
+    font-size: 4rem;
+    color: rgb(42, 41, 41);
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score {
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.choice {
+    font-size: 3rem;
+    color: rgb(42, 41, 41);
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3rem;
+}
+
+.buttons button {
+    width: 7rem;
+    height: 3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    border-radius: 1rem;
+    background-color: rgb(203, 107, 107);
+}

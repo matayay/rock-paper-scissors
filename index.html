@@ -5,145 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./rps.js" defer></script>
 </head>
 <body>
-    <script>
-        
-        function getComputerChoice()
-        {
-            const choices = ["rock", "paper", "scissors"];
-            let prob = Math.floor(Math.random() * 3);
+    <h1 class="title">Rock Paper Scissors</h1>
 
-            return choices[prob];
-        }
+    <div class="round"></div>
 
-        function playRound( player_select, computer_select )
-        {
-            let round_winner;
+    <div class="score"></div>
 
-            if ( player_select == "rock" )
-            {
-                if ( computer_select == "paper" )
-                {
-                    round_winner = "You Lose! Paper beats Rock";
-                }
+    <div class="game">
+        <h2 class="choice">Choose One:</h2>
 
-                else if ( computer_select == "scissors" )
-                {
-                    round_winner = "You Win! Rock beats Scissors";
-                }
-
-                else
-                {
-                    round_winner = "Tie!";
-                }
-            }
-
-            else if ( player_select == "paper" )
-            {
-                if ( computer_select == "paper" )
-                {
-                    round_winner = "Tie!";
-                }
-
-                else if ( computer_select == "scissors" )
-                {
-                    round_winner = "You Lose! Scissors beats Paper";
-                }
-
-                else
-                {
-                    round_winner = "You Win! Paper beats Rock";
-                }
-            }
-
-            else if ( player_select == "scissors" )
-            {
-                if ( computer_select == "paper" )
-                {
-                    round_winner = "You Win! Scissors beats Paper";
-                }
-
-                else if ( computer_select == "scissors" )
-                {
-                    round_winner = "Tie!";
-                }
-
-                else
-                {
-                    round_winner = "You Lose! Rock beats Scissors";
-                }
-            }
-
-            return round_winner;
-        }
-
-        function game()
-        {
-            let player_choice;
-            let round_win;
-            let human = 0;
-            let computer = 0;
-
-            for ( let i = 0; i < 5; i++ )
-            {
-                do 
-                {
-                    player_choice = prompt("Choose one: Rock, Paper, or Scissors");
-                    if ( player_choice.toLowerCase() != "rock" && player_choice.toLowerCase() != "paper" && player_choice.toLowerCase() != "scissors" )
-                    {
-                        console.log("Invalid input, please try again.");
-                    }
-                } 
-                while ( player_choice.toLowerCase() != "rock" && player_choice.toLowerCase() != "paper" && player_choice.toLowerCase() != "scissors" );
-
-                player_choice = player_choice.toLowerCase();
-                round_win = playRound(player_choice, getComputerChoice());
-
-                if ( round_win.length == 4 )
-                {
-                    console.log(round_win);
-                    console.log("Your score: " + human);
-                    console.log("Computer score: " + computer);
-                }
-
-                else if ( round_win[4] == 'L' )
-                {
-                    computer += 1;
-                    console.log(round_win);
-                    console.log("Your score: " + human);
-                    console.log("Computer score: " + computer);
-                }
-
-                else if ( round_win[4] == 'W' )
-                {
-                    human += 1;
-                    console.log(round_win);
-                    console.log("Your score: " + human);
-                    console.log("Computer score: " + computer);
-                }
-            }
-
-            if ( human > computer )
-            {
-                console.log("You Win!");
-            }
-
-            else if ( human < computer )
-            {
-                console.log("You lost!");
-            }
-
-            else 
-            {
-                console.log("The game was a tie.");
-            }
-
-            return;
-        }
-
-        game();
-
-    </script>
+        <div class="buttons">
+            <button class="rock">Rock</button>
+            <button class="paper">Paper</button>
+            <button class="scissors">Scissors</button>
+        </div>
+    </div>
 </body>
 </html>
