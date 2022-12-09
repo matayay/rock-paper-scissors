@@ -70,60 +70,113 @@ function playRound( player_select, computer_select )
 
 // Main Program
 
+const starting_message = document.querySelector('.start');
+const message = document.createElement('h1');
+message.textContent = "You vs the Computer. First to five rounds wins!";
+starting_message.appendChild(message);
+
 let human = 0;
 let computer = 0;
+let repeat = true;
+let start = true;
 
 const buttons = document.querySelectorAll('button');
+
+const round = document.querySelector('.round');
+const round_result = document.createElement('h2');
+const game_result = document.createElement('h1');
+
+const score = document.querySelector('.score');
+const player = document.createElement('h3');
+const ai = document.createElement('h3');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         round_win = playRound(button.className, getComputerChoice());
 
+        if ( start === true )
+        {
+            starting_message.removeChild(message);
+            start = false;
+        }
+
+        if ( repeat === false )
+        {
+            round.removeChild(game_result);
+            repeat = true;
+        }
+
         if ( round_win.length == 4 )
         {
-            console.log(round_win);
-            console.log("Your score: " + human);
-            console.log("Computer score: " + computer);
+            round_result.textContent = round_win;
+            player.textContent = "Your score: " + human;
+            ai.textContent = "Computer score: " + computer;
+
+            score.appendChild(player);
+            score.appendChild(ai);
+            round.appendChild(round_result);
         }
 
         else if ( round_win[4] == 'L' )
         {
             computer += 1;
-            console.log(round_win);
-            console.log("Your score: " + human);
-            console.log("Computer score: " + computer);
+
+            round_result.textContent = round_win;
+            player.textContent = "Your score: " + human;
+            ai.textContent = "Computer score: " + computer;
+
+            score.appendChild(player);
+            score.appendChild(ai);
+            round.appendChild(round_result);
         }
 
         else if ( round_win[4] == 'W' )
         {
             human += 1;
-            console.log(round_win);
-            console.log("Your score: " + human);
-            console.log("Computer score: " + computer);
+
+            round_result.textContent = round_win;
+            player.textContent = "Your score: " + human;
+            ai.textContent = "Computer score: " + computer;
+
+            score.appendChild(player);
+            score.appendChild(ai);
+            round.appendChild(round_result);
         }
 
         if ( human === 5 || computer === 5 )
         {
+            score.removeChild(player);
+            score.removeChild(ai);
+            round.removeChild(round_result);
+
             if ( human > computer )
             {
-                console.log("You Win!");
+                game_result.textContent = "You Win!";
+                round.appendChild(game_result);
+
                 human = 0;
                 computer = 0;
             }
 
             else if ( human < computer )
             {
-                console.log("You lost!");
+                game_result.textContent = "You lost!";
+                round.appendChild(game_result);
+
                 human = 0;
                 computer = 0;
             }
 
             else 
             {
-                console.log("The game was a tie.");
+                game_result.textContent = "The game was a tie.";
+                round.appendChild(game_result);
+
                 human = 0;
                 computer = 0;
             }
+
+            repeat = false;
         }
     });
 });
